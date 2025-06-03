@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fitnes Centar - O nama</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html">Početna</a>
+        <a href="about.html">O nama</a>
+        <a href="membership.html">Učlanjenje</a>
+        <a href="contact.html">Kontakt</a>
+    </nav>
+
+    <header>O našem centru</header>
+
+    <div class="pokretni">
+        <div class="pokretni-tekst">Treniraj uz najbolje trenere i opremu!</div>
+    </div>
+
+    <div class="container">
+
+        <h2 class="tekst">Naša priča</h2>
+
+        <p class="tekst">Fitnes Centar je osnovan sa ciljem da ljudima pruži kvalitetan trening i zdrav stil života.
+            Sve je počelo kada je naš osnivač, bivši sportista i sertifikovani trener, primetio da
+            većina teretana ne pruža ličan pristup korisnicima i da im nedostaje prava podrška na tom putu.</p>
+        <p class="tekst">Sa tim u vidu, okupio je mali tim entuzijasta iz oblasti sporta, nutricionizma i fizioterapije,
+            i zajedno su otvorili prvi prostor od svega 60 kvadrata, sa nekoliko sprava i velikom voljom.
+            Vremenom, kroz posvećenost i preporuke zadovoljnih članova, naš centar je prerastao u jedan
+            od najmodernijih objekata u regionu.</p>
+        <p class="tekst">Danas, sa ponosom nudimo vrhunske uslove za trening, savremenu opremu,
+            lične trenere, grupne programe i pristup stručnjacima za ishranu i rehabilitaciju.
+            Ali ono što nas i dalje izdvaja jeste porodična atmosfera i lično zalaganje za svakog člana –
+            jer za nas, svaki početak je važan, a svaki uspeh – zajednički.</p>
+
+        <img src="trainers.jpg" alt="Slika">
+
+        <table id="tabela1">
+            <thead class="tabela1-red1">
+                <tr>
+                    <th>ID</th>
+                    <th>NAZIV PAKETA</th>
+                    <th>CENA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <template id="template">
+            <tr>
+                    <td class="ID"></td>
+                    <td class="NAZIV"></td>
+                    <td class="CENA"></td>
+                </tr>
+        </template>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            const tabela1 = document.getElementById('tabela1')
+            const template = document.getElementById('template')
+            axios.get('C:\Users\Korisnik\Desktop\Projekat\bazaaa')
+        </script>
+
+        <table class="tabela2">
+            <thead class="tabela2-red1">
+                <tr>
+                    <th>NAZIV</th>
+                    <th>CENA</th>
+                    <th>TRENER</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+        <p>Ovde treba iz baze učitati tabelu</p>
+
+    </div>
+
+</body>
+
+</html>
