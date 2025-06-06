@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="sr">
+
 <head>
     <meta charset="UTF-8">
     <title>Fitnes Centar - Učlanjenje</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <nav>
@@ -24,15 +26,27 @@
 
         <h2>Forma za učlanjenje</h2>
 
-        <form>
-            <input type="text" placeholder="Ime i prezime" required>
-            <input type="email" placeholder="Email" required>
-            <input type="tel" placeholder="Broj telefona" required>
-            <textarea placeholder="Napomena"></textarea>
+        <form action="submit.php" method="POST">
+            <label for="ime">Ime:</label>
+            <input type="text" id="ime" name="ime" required>
+
+            <label for="prezime">Prezime:</label>
+            <input type="text" id="prezime" name="prezime" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="telefon">Broj telefona:</label>
+            <input type="tel" id="telefon" name="telefon" required>
+
+            <label for="napomena">Napomena:</label>
+            <textarea id="napomena" name="napomena"></textarea>
+
             <input type="submit" value="Pošalji">
         </form>
 
     </div>
 
 </body>
+
 </html>
