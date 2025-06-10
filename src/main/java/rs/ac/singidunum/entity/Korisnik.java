@@ -1,5 +1,6 @@
 package rs.ac.singidunum.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +27,7 @@ public class Korisnik {
     private String prezime;
 
     @Column(nullable = false)
-    private Integer paket;
+    private Integer paket_id;
 
     @Column(nullable = false)
     private String email;
@@ -37,11 +38,12 @@ public class Korisnik {
     private String napomena;
 
     @Column(nullable = false)
-    private LocalDateTime napravljeno_at;
+    private LocalDateTime createdAt;
 
-    private LocalDateTime updated_at;
+    private LocalDateTime updatedAt;
 
-    private LocalDateTime deleted_at;
+    @JsonIgnore
+    private LocalDateTime deletedAt;
 
 
 }
