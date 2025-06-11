@@ -82,9 +82,9 @@ ExportSQL_CreateTables<|||>3<|||>1
 ExportSQL_DataHow<|||>3<|||>2
 ExportSQL_Filenames<|||>1<|||>C:\Users\Korisnik\Desktop\Projekat\bazaaa\baza_1.sql<{{{><}}}>D:\FAKS\2. godina\4. Baze podataka\Vezba_za_ispit\Ispit\Baza_ispit.sql<{{{><}}}>D:\FAKS\2. godina\4. Baze podataka\001 - Smer RN i SII (BG)\Nedelja 14\BASEEE_2023_201114.sql<{{{><}}}>D:\FAKS\2. godina\4. Baze podataka\Vezba_za_ispit\Nedelja01\broj_indeksa.sql<{{{><}}}>
 dbtreewidth<|||>3<|||>349
-SQLFile0<|||>1<|||>C:\Users\Korisnik\Desktop\Projekat\korisnik.mwb
-SQLFile1<|||>1<|||>C:\Users\Korisnik\Desktop\Projekat\tabela2.sql
-SQLFile2<|||>1<|||>C:\Users\Korisnik\Desktop\Projekat\tabela1.sql
+SQLFile0<|||>1<|||>C:\Users\Korisnik\Desktop\Projekat\tabela2.sql
+SQLFile1<|||>1<|||>C:\Users\Korisnik\Desktop\Projekat\tabela1.sql
+SQLFile2<|||>1<|||>C:\Users\Korisnik\Desktop\Projekat\korisnik.mwb
 SQLFile3<|||>1<|||>D:\FAKS\2. godina\4. Baze podataka\Vezba_za_ispit\Ispit\Baza_ispit.sql
 SQLFile4<|||>1<|||>D:\FAKS\2. godina\4. Baze podataka\001 - Smer RN i SII (BG)\Nedelja 14\IMTDB_2022123456.sql
 SQLFile5<|||>1<|||>D:\FAKS\2. godina\4. Baze podataka\Vezba_za_ispit\Nedelja01\Upit.sql
@@ -180,9 +180,9 @@ Servers\Projekat\LogFileDdl<|||>3<|||>0
 Servers\Projekat\LogFileDml<|||>3<|||>0
 Servers\Projekat\LogFilePath<|||>1<|||>C:\Users\Korisnik\AppData\Roaming\HeidiSQL\Logs\%session\%db\%y%m%d.sql
 Servers\Projekat\ServerVersionFull<|||>1<|||>10.4.32-MariaDB - mariadb.org binary distribution
-Servers\Projekat\ConnectCount<|||>3<|||>3
+Servers\Projekat\ConnectCount<|||>3<|||>4
 Servers\Projekat\ServerVersion<|||>3<|||>100432
-Servers\Projekat\LastConnect<|||>1<|||>2025-06-10 17:12:12
+Servers\Projekat\LastConnect<|||>1<|||>2025-06-11 13:20:31
 Servers\Projekat\lastUsedDB<|||>1<|||>korisnik
 Servers\Projekat\QueryHistory\1<|||>1<|||>2025-06-05 11:47:35|baza1|0|SELECT*<{{{><}}}>FROM paket,trener,trener_paket
 Servers\Projekat\QueryHistory\2<|||>1<|||>2025-06-05 11:48:55|baza1|0|SELECT paket_id,<{{{><}}}>		 naziv,<{{{><}}}>		 cena<{{{><}}}>FROM  paket
