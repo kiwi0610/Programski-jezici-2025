@@ -42,11 +42,11 @@ ColWidths_frmTableEditor.listColumns<|||>1<|||>61,100,154,90,60,65,50,117,130,14
 ColsVisible_frmTableEditor.listColumns<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10,11
 ColPositions_frmTableEditor.listColumns<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10,11
 ColSort_frmTableEditor.listColumns<|||>1<|||>-1,0
-ColWidths_frmTableEditor.treeIndexes<|||>1<|||>1085,100,80,120,80
+ColWidths_frmTableEditor.treeIndexes<|||>1<|||>234,100,80,120,80
 ColsVisible_frmTableEditor.treeIndexes<|||>1<|||>0,1,2,3,4
 ColPositions_frmTableEditor.treeIndexes<|||>1<|||>0,1,2,3,4
 ColSort_frmTableEditor.treeIndexes<|||>1<|||>-1,0
-ColWidths_frmTableEditor.listForeignKeys<|||>1<|||>510,316,240,159,154,92
+ColWidths_frmTableEditor.listForeignKeys<|||>1<|||>10,316,240,159,154,92
 ColsVisible_frmTableEditor.listForeignKeys<|||>1<|||>0,1,2,3,4,5
 ColPositions_frmTableEditor.listForeignKeys<|||>1<|||>0,1,2,3,4,5
 ColSort_frmTableEditor.listForeignKeys<|||>1<|||>-1,0
@@ -63,7 +63,7 @@ querymemoheight<|||>3<|||>489
 queryhelperswidth<|||>3<|||>178
 FontSize<|||>3<|||>18
 FilterPanel<|||>3<|||>0
-DateTimeEditor_CursorPos_Type4<|||>3<|||>6
+DateTimeEditor_CursorPos_Type4<|||>3<|||>19
 CSVImportDuplicateHandling<|||>3<|||>0
 CSVImportParseMethod<|||>3<|||>1
 WrapLongLines<|||>3<|||>1
@@ -180,9 +180,9 @@ Servers\Projekat\LogFileDdl<|||>3<|||>0
 Servers\Projekat\LogFileDml<|||>3<|||>0
 Servers\Projekat\LogFilePath<|||>1<|||>C:\Users\Korisnik\AppData\Roaming\HeidiSQL\Logs\%session\%db\%y%m%d.sql
 Servers\Projekat\ServerVersionFull<|||>1<|||>10.4.32-MariaDB - mariadb.org binary distribution
-Servers\Projekat\ConnectCount<|||>3<|||>4
+Servers\Projekat\ConnectCount<|||>3<|||>5
 Servers\Projekat\ServerVersion<|||>3<|||>100432
-Servers\Projekat\LastConnect<|||>1<|||>2025-06-11 13:20:31
+Servers\Projekat\LastConnect<|||>1<|||>2025-06-11 14:11:49
 Servers\Projekat\lastUsedDB<|||>1<|||>korisnik
 Servers\Projekat\QueryHistory\1<|||>1<|||>2025-06-05 11:47:35|baza1|0|SELECT*<{{{><}}}>FROM paket,trener,trener_paket
 Servers\Projekat\QueryHistory\2<|||>1<|||>2025-06-05 11:48:55|baza1|0|SELECT paket_id,<{{{><}}}>		 naziv,<{{{><}}}>		 cena<{{{><}}}>FROM  paket

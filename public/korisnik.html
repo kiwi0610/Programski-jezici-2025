@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
 
     <nav>
@@ -16,18 +18,76 @@
         <a href="contact.html"><i class="fas fa-envelope"></i> Kontakt</a>
         <a href="./korisnik.html"><i class="fas fa-user"></i> Korisnik</a>
     </nav>
-    <table class="tabela">
+    <table class="tabela" id="table">
         <thead>
             <tr>
-                <th><i class="fa-solid fa-input-text"></i>Ime</th>
+                <th><i class="fa-solid fa-pen-to-square"></i>Ime</th>
                 <th><i class="fa-solid fa-dumbbell"></i>Paket</th>
                 <th><i class="fa-solid fa-envelope"></i>Email</th>
                 <th><i class="fa-solid fa-mobile-screen-button"></i>Telefon</th>
                 <th><i class="fa-solid fa-comment"></i>Napomena</th>
+                <th><i class="fa-solid fa-clock"></i>Izmenjeno</th>
                 <th><i class="fa-solid fa-gear"></i>Opcije</th>
             </tr>
         </thead>
     </table>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <template id="template">
+        <tr>
+            <td class="id"></td>
+            <td class="ime"></td>
+            <td class="paket"></td>
+            <td class="email"></td>
+            <td class="telefon"></td>
+            <td class="napomena"></td>
+            <td class="update"></td>
+            <td>
+                <div class="dugme">
+                    <a href="#" class="dugme1 edit"><i class="fa-solid fa-pen"></i></a>
+                    <button type="button" class="dugme1 delete"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </td>
+        </tr>
+    </template>
+
+
+    <script>
+
+        const table = document.getElementById('table')
+        const template = document.getElementById('template')
+
+        axios.get('http://localhost:8080/korisnik.html')
+            .then(rsp => {
+                rsp.data.array.forEach(korisnik => {
+                    const copy = template.content.cloneNode(true)
+                    copy.querySelector('.id').innerText = korisnik.id
+                    copy.querySelector('.ime').innerText = `${korisnik.ime}${korisnik.prezime}`
+                    copy.querySelector('.paket').innerText = korisnik.paket
+                    copy.querySelector('.email').innerText = korisnik.email
+                    copy.querySelector('.telefon').innerText = korisnik.telefon
+                    copy.querySelector('.napomena').innerText = korisnik.napomena ?? 'N/A'
+                    copy.querySelector('.update').innerText = 
+                        new Date(korisnik.updatedAt ?? korisnik.createdAt).toLocaleDateString('sr-RS')
+
+                    copy.querySelector('.edit').href = '/edit/korisnik.html?id=' + korisnik.id
+                    copy.querySelector('.remove').addEventListener('click', () =>{
+                        if(!confirm(`Da li želite da obrišetekorisnika ${name}?`)) return
+                        axios.request({
+                            url: `/api/korisnik/${korisnik.id}`,
+                            method: 'delete'
+                        })
+                        .then(rsp => window.location.reload())
+                    })
+                    table.appendChild(copy)
+                });
+            })
+
+
+
+    </script>
+
 </body>
+
 </html>
