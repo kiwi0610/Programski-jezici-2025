@@ -213,3 +213,15 @@ form input[type="submit"]:hover {
 .tabela tbody tr:hover {
     background-color: #2a2a2a;
 }
+
+div button {
+    color: #00ff88;
+}
+
+#dugme1 {
+    color: #007bff;
+}
+
+#dugme2 i {
+    color: #dc3545;
+}

@@ -27,7 +27,7 @@ public class Korisnik {
     private String prezime;
 
     @Column(nullable = false)
-    private Integer paket_id;
+    private Integer paketId;
 
     @Column(nullable = false)
     private String email;

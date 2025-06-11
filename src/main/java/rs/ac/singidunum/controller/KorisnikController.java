@@ -35,6 +35,7 @@ public class KorisnikController {
         Korisnik korisnik = new Korisnik();
         korisnik.setIme(model.getIme());
         korisnik.setPrezime(model.getPrezime());
+        korisnik.setPaketId(model.getPaketId());
         korisnik.setEmail(model.getEmail());
         korisnik.setTelefon(model.getTelefon());
         korisnik.setNapomena(model.getNapomena());
@@ -49,6 +50,7 @@ public class KorisnikController {
 
         korisnik.setIme(model.getIme());
         korisnik.setPrezime(model.getPrezime());
+        korisnik.setPaketId(model.getPaketId());
         korisnik.setEmail(model.getEmail());
         korisnik.setTelefon(model.getTelefon());
         korisnik.setNapomena(model.getNapomena());

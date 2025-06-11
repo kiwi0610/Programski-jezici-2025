@@ -21,6 +21,7 @@
     <table class="tabela" id="table">
         <thead>
             <tr>
+                <th><i class="fa-solid fa-id-card"></i>ID</th>
                 <th><i class="fa-solid fa-pen-to-square"></i>Ime</th>
                 <th><i class="fa-solid fa-dumbbell"></i>Paket</th>
                 <th><i class="fa-solid fa-envelope"></i>Email</th>
@@ -32,48 +33,54 @@
         </thead>
     </table>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
     <template id="template">
         <tr>
             <td class="id"></td>
             <td class="ime"></td>
-            <td class="paket"></td>
+            <td class="paketId"></td>
             <td class="email"></td>
             <td class="telefon"></td>
             <td class="napomena"></td>
-            <td class="update"></td>
+            <td class="updatedAt"></td>
             <td>
                 <div class="dugme">
-                    <a href="#" class="dugme1 edit"><i class="fa-solid fa-pen"></i></a>
-                    <button type="button" class="dugme1 delete"><i class="fa-solid fa-trash"></i></button>
+                    <a href="/edit/korisnik.html" class="dugme edit">
+                        <i class="fa-solid fa-pen" id="dugme1"></i>
+                    </a>
+                    <button type="button" class="dugme delete" id="dugme2">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
                 </div>
             </td>
         </tr>
     </template>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
 
         const table = document.getElementById('table')
         const template = document.getElementById('template')
 
-        axios.get('http://localhost:8080/korisnik.html')
+        axios.get('http://localhost:8080/api/korisnik')
             .then(rsp => {
-                rsp.data.array.forEach(korisnik => {
+                rsp.data.forEach(korisnik => {
+
                     const copy = template.content.cloneNode(true)
+                    const ime = `${korisnik.ime} ${korisnik.prezime}`
+
                     copy.querySelector('.id').innerText = korisnik.id
-                    copy.querySelector('.ime').innerText = `${korisnik.ime}${korisnik.prezime}`
-                    copy.querySelector('.paket').innerText = korisnik.paket
+                    copy.querySelector('.ime').innerText = ime
+                    copy.querySelector('.paketId').innerText = korisnik.paketId
                     copy.querySelector('.email').innerText = korisnik.email
                     copy.querySelector('.telefon').innerText = korisnik.telefon
                     copy.querySelector('.napomena').innerText = korisnik.napomena ?? 'N/A'
-                    copy.querySelector('.update').innerText = 
+                    copy.querySelector('.updatedAt').innerText = 
                         new Date(korisnik.updatedAt ?? korisnik.createdAt).toLocaleDateString('sr-RS')
 
                     copy.querySelector('.edit').href = '/edit/korisnik.html?id=' + korisnik.id
-                    copy.querySelector('.remove').addEventListener('click', () =>{
-                        if(!confirm(`Da li želite da obrišetekorisnika ${name}?`)) return
+                    copy.querySelector('.delete').addEventListener('click', () => {
+                        if(!confirm(`Da li želite da obrišete korisnika ${ime}?`)) return
                         axios.request({
                             url: `/api/korisnik/${korisnik.id}`,
                             method: 'delete'
