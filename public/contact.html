@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="sr">
+
 <head>
     <meta charset="UTF-8">
     <title>Fitnes Centar - Kontakt</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
 
     <nav>
@@ -14,6 +16,7 @@
         <a href="membership.html"><i class="fas fa-id-card"></i> Učlanjenje</a>
         <a href="contact.html"><i class="fas fa-envelope"></i> Kontakt</a>
         <a href="./korisnik.html"><i class="fas fa-user"></i> Korisnik</a>
+        <a href="./edit/contact.html"><i class="fas fa-edit"></i> Izmeni poruku</a>
     </nav>
 
     <header>Kontaktirajte nas</header>
@@ -21,16 +24,58 @@
     <div class="pokretni">
         <div class="pokretni-tekst">Tu smo za sva vaša pitanja i sugestije!</div>
     </div>
-    
-    <div class="container">
 
-        <h2>Naši kontakt podaci</h2>
-        <p>Email: kontakt@fitnescentar.rs</p>
-        <p>Telefon: +381 64 123 4567</p>
-
-        <h3>Upiti iz baze (primer)</h3>
-        <p>Ovo mesto je rezervisano za prikaz korisničkih upita iz baze podataka.</p>
-        <!-- Ovde biste u PHP/ASP.Net npr. povezali bazu i prikazali rezultate -->
     </div>
+    <div class="container">
+        <h2><i class="fas fa-phone"></i> Naši kontakt podaci</h2>
+        <p><i class="fas fa-envelope"></i> Email: <a href="kontakt@fitnescentar.rs">kontakt@fitnescentar.rs</a>
+        </p>
+        <p><i class="fas fa-phone-alt"></i> Telefon: <a href="tel:+381641234567">+381 64 123 4567</a></p>
+        <p><i class="fas fa-map-marker-alt"></i> Adresa: Adresa, Beograd</p>
+        <p><i class="fas fa-clock"></i> Radno vreme: Pon–Pet: 08–22h, Sub–Ned: 10–20h</p>
+
+        <h2><i class="fas fa-paper-plane"></i> Pošaljite nam poruku</h2>
+
+        <form id="editForm">
+            <input type="hidden" id="id" name="id" />
+
+            <label for="ime">Ime i prezime:</label>
+            <input type="text" id="ime" name="ime" required>
+
+            <label for="email">Email adresa:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="poruka">Vaša poruka:</label>
+            <textarea id="poruka" name="poruka" rows="5" required></textarea>
+
+            <input type="submit" value="Pošalji poruku">
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.getElementById('editForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const payload = {
+                ime: document.getElementById('ime').value,
+                email: document.getElementById('email').value,
+                tekst: document.getElementById('poruka').value
+            };
+
+            axios.post('http://localhost:8080/api/poruke', payload)
+                .then(response => {
+                    alert('Poruka uspešno poslata!');
+                    this.reset();
+                })
+                .catch(error => {
+                    alert('Greška prilikom slanja poruke.');
+                    console.error(error);
+                });
+        });
+    </script>
+
 </body>
+
 </html>

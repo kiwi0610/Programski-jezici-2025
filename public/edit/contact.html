@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Poruka</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <nav>
+        <a href="../index.html"><i class="fas fa-home"></i> Početna</a>
+        <a href="../about.html"><i class="fas fa-info-circle"></i> O nama</a>
+        <a href="../membership.html"><i class="fas fa-id-card"></i> Učlanjenje</a>
+        <a href="../contact.html"><i class="fas fa-envelope"></i> Kontakt</a>
+        <a href="../korisnik.html"><i class="fas fa-user"></i> Korisnik</a>
+        <a href="izmeni-poruku.html"><i class="fas fa-edit"></i> Izmeni poruku</a>
+    </nav>
+
+    <h1></h1>
+
+    <table class="tabela" id="table">
+        <thead>
+            <tr>
+                <th><i class="fa-solid fa-id-card"></i>ID</th>
+                <th><i class="fa-solid fa-pen-to-square"></i>Ime</th>
+                <th><i class="fa-solid fa-envelope"></i>Email</th>
+                <th><i class="fa-solid fa-comment"></i>Tekst</th>
+                <th><i class="fa-solid fa-clock"></i>Vreme</th>
+                <th><i class="fa-solid fa-gear"></i>Opcije</th>
+            </tr>
+        </thead>
+    </table>
+
+    <template id="template">
+        <tr>
+            <td class="id"></td>
+            <td class="ime"></td>
+            <td class="email"></td>
+            <td class="tekst"></td>
+            <td class="vreme"></td>
+            <td>
+                <div class="dugme">
+                    <a href="#" class="dugme edit" id="dugme1">
+                        <i class="fa-solid fa-pen" title="Izmeni poruku"></i>
+                    </a>
+                    <button type="button" class="dugme delete" id="dugme2">
+                        <i class="fa-solid fa-trash-can" title="Obriši poruku"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        const table = document.getElementById('table');
+        const template = document.getElementById('template');
+
+        axios.get('http://localhost:8080/api/poruke')
+            .then(rsp => {
+                rsp.data.forEach(poruka => {
+                    const copy = template.content.cloneNode(true);
+
+                    copy.querySelector('.id').innerText = poruka.id;
+                    copy.querySelector('.ime').innerText = poruka.ime;
+                    copy.querySelector('.email').innerText = poruka.email;
+                    copy.querySelector('.tekst').innerText = poruka.tekst ?? 'N/A';
+                    copy.querySelector('.vreme').innerText =
+                        new Date(poruka.poslatoAt).toLocaleString('sr-RS');
+
+                    copy.querySelector('.edit').href = 'edit/poruka.html?id=' + poruka.id;
+
+                    copy.querySelector('.delete').addEventListener('click', () => {
+                        if (!confirm(`Da li želite da obrišete poruku od ${poruka.ime}?`)) return;
+
+                        axios.delete(`http://localhost:8080/api/poruke/${poruka.id}`)
+                            .then(() => window.location.reload());
+                    });
+
+                    table.appendChild(copy);
+                });
+            });
+    </script>
+
+</body>
+
+</html>

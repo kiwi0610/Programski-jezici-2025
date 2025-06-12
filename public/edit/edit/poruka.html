@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Poruka izmena</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="../../index.html"><i class="fas fa-home"></i> Početna</a>
+        <a href="../../about.html"><i class="fas fa-info-circle"></i> O nama</a>
+        <a href="../../membership.html"><i class="fas fa-id-card"></i> Učlanjenje</a>
+        <a href="../../contact.html"><i class="fas fa-envelope"></i> Kontakt</a>
+        <a href="../korisnik.html"><i class="fas fa-user"></i> Korisnik</a>
+        <a href="../contact.html"><i class="fas fa-edit"></i> Izmeni poruku</a>
+    </nav>
+
+    <div class="container">
+        <h2>Izmeni poruku</h2>
+        <form method="POST" id="edit-form">
+
+            <div>
+                <label for="id">ID:</label>
+                <input type="number" id="id" name="id" disabled>
+            </div>
+            <div>
+                <label for="ime">Ime:</label>
+                <input type="text" id="ime" name="ime">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div>
+                <label for="tekst">Tekst:</label>
+                <textarea id="tekst" name="tekst"></textarea>
+            </div>
+
+            <button type="submit" class="submit">
+                <i class="fa-solid fa-bookmark"></i> Sačuvaj
+            </button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const parametar = new URLSearchParams(window.location.search);
+        const idParametar = parametar.get('id');
+
+        if (!idParametar) {
+            alert("Nije prosleđen ID poruke!");
+            
+        } else {
+
+            axios.get('http://localhost:8080/api/poruke')
+                .then(response => {
+                    const poruka = response.data.find(p => p.id == idParametar);
+                    if (!poruka) {
+                        alert("Poruka nije pronađena!");
+                        return;
+                    }
+
+                    document.getElementById('id').value = poruka.id;
+                    document.getElementById('ime').value = poruka.ime;
+                    document.getElementById('email').value = poruka.email;
+                    document.getElementById('tekst').value = poruka.tekst || '';
+                })
+                .catch(err => {
+                    alert("Greška pri učitavanju poruka: " + err);
+                });
+
+            document.getElementById('edit-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const payload = {
+                    ime: document.getElementById('ime').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    tekst: document.getElementById('tekst').value.trim()
+                };
+
+                axios.put(`http://localhost:8080/api/poruke/${idParametar}`, payload)
+                    .then(() => {
+                        alert("Poruka uspešno izmenjena!");
+                    })
+                    .catch(err => {
+                        alert("Greška prilikom čuvanja poruke: " + err);
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>
