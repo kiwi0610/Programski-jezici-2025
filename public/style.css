@@ -219,9 +219,25 @@ div button {
 }
 
 #dugme1 {
-    color: #007bff;
+    color: black;
+    background-color: #00ff88;
+    border: #000;
+    padding: auto;
+    margin-left: 50px;
+    font-size: medium;
 }
 
 #dugme2 i {
-    color: #dc3545;
+    color: red;
+    background-color: black;
+    border-color: black; 
+    padding: auto;
+    font-size: medium;
+}
+
+.submit {
+    font-size: 25px;
+    color: #00ff88;
+    background-color: #2a2a2a;
+    border-color: #2a2a2a;
 }

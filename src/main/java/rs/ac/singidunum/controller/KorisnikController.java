@@ -43,9 +43,8 @@ public class KorisnikController {
         return repository.save(korisnik);
     }
 
-    @PutMapping
-    public Korisnik updateCustomer(@PathVariable Integer id,@RequestBody Korisnik model){
-
+    @PutMapping(path = "/{id}")
+    public Korisnik updateCustomer(@PathVariable Integer id, @RequestBody Korisnik model) {
         Korisnik korisnik = repository.findById(id).orElseThrow();
 
         korisnik.setIme(model.getIme());
@@ -55,6 +54,7 @@ public class KorisnikController {
         korisnik.setTelefon(model.getTelefon());
         korisnik.setNapomena(model.getNapomena());
         korisnik.setUpdatedAt(LocalDateTime.now());
+
         return repository.save(korisnik);
     }
 

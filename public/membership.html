@@ -28,20 +28,20 @@
 
         <h2>Forma za učlanjenje</h2>
 
-        <form action="submit.php" method="POST">
+        <form method="POST">
             <label for="ime">Ime:</label>
             <input type="text" id="ime" name="ime" required>
 
             <label for="prezime">Prezime:</label>
             <input type="text" id="prezime" name="prezime" required>
 
-            <label for="trener">Odaberi paket: </label>
-            <select id="myDropdown" required>
-                <option value="paket1">Paket 1</option>
-                <option value="paket2">Paket 2</option>
-                <option value="paket3">Paket 3</option>
-                <option value="paket4">Paket 4</option>
-                <option value="paket5">Paket 5</option>
+            <label for="paket">Odaberi paket: </label>
+            <select id="paketId" required>
+                <option value="1">Paket 1</option>
+                <option value="2">Paket 2</option>
+                <option value="3">Paket 3</option>
+                <option value="4">Paket 4</option>
+                <option value="5">Paket 5</option>
             </select><br><br>
 
             <label for="email">Email:</label>
@@ -57,6 +57,33 @@
         </form>
 
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function (e) {
+            e.preventDefault(); 
+
+            const korisnik = {
+                ime: document.getElementById("ime").value,
+                prezime: document.getElementById("prezime").value,
+                email: document.getElementById("email").value,
+                telefon: document.getElementById("telefon").value,
+                napomena: document.getElementById("napomena").value || null,
+                paketId: parseInt(document.getElementById("paketId").value)
+            };
+
+            axios.post("/api/korisnik", korisnik)
+                .then(() => {
+                    alert("Uspešno ste se učlanili!");
+                    window.location.href = "korisnik.html"; 
+                })
+                .catch(error => {
+                    alert("Greška prilikom učlanjenja.");
+                    console.error(error);
+                });
+        });
+    </script>
 
 </body>
 

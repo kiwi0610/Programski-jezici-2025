@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Izmeni korisnika</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="../index.html"><i class="fas fa-home"></i> Početna</a>
+        <a href="../about.html"><i class="fas fa-info-circle"></i> O nama</a>
+        <a href="../membership.html"><i class="fas fa-id-card"></i> Učlanjenje</a>
+        <a href="../contact.html"><i class="fas fa-envelope"></i> Kontakt</a>
+        <a href="../korisnik.html"><i class="fas fa-user"></i> Korisnik</a>
+    </nav>
+
+    <div class="container">
+        <h2>Izmeni korisnika</h2>
+        <form method="POST" id="edit">
+
+            <div>
+                <label for="id">ID:</label>
+                <input type="number" id="id" name="id" disabled>
+            </div>
+            <div>
+                <label for="ime">Ime:</label>
+                <input type="text" id="ime" name="ime">
+            </div>
+            <div>
+                <label for="prezime">Prezime:</label>
+                <input type="text" id="prezime" name="prezime">
+            </div>
+            <div>
+                <label for="paketId">Odaberi paket: </label>
+                <select id="paketId" name="paketId">
+                    <option value="1">Paket 1</option>
+                    <option value="2">Paket 2</option>
+                    <option value="3">Paket 3</option>
+                    <option value="4">Paket 4</option>
+                    <option value="5">Paket 5</option>
+                </select><br><br>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="telefon">Broj telefona:</label>
+                <input type="text" id="telefon" name="telefon" required>
+            </div>
+            <div>
+                <label for="napomena">Napomena:</label>
+                <textarea id="napomena" name="napomena"></textarea>
+            </div>
+
+            <button type="submit" class="submit">
+                <i class="fa-solid fa-bookmark"></i> Sačuvaj
+            </button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        const parametar = new URLSearchParams(location.search);
+        const idParametar = parametar.get('id');
+
+        if (!idParametar) {
+            window.location.href = 'korisnik.html';
+        } else {
+            axios.get(`/api/korisnik/${idParametar}`)
+                .then(response => {
+                    const korisnik = response.data;
+
+                    document.getElementById('id').value = korisnik.id;
+                    document.getElementById('ime').value = korisnik.ime;
+                    document.getElementById('prezime').value = korisnik.prezime;
+                    document.getElementById('email').value = korisnik.email;
+                    document.getElementById('telefon').value = korisnik.telefon;
+                    document.getElementById('napomena').value = korisnik.napomena || '';
+                    document.getElementById('paketId').value = korisnik.paketId;
+
+                    document.getElementById('edit').addEventListener('submit', function (e) {
+                        e.preventDefault();
+
+                        const payload = {
+                            ime: document.getElementById('ime').value,
+                            prezime: document.getElementById('prezime').value,
+                            paketId: document.getElementById('paketId').value,
+                            email: document.getElementById('email').value,
+                            telefon: document.getElementById('telefon').value,
+                            napomena: document.getElementById('napomena').value || null
+                        };
+
+                        axios.put(`/api/korisnik/${korisnik.id}`, {
+                            ime: document.getElementById('ime').value,
+                            prezime: document.getElementById('prezime').value,
+                            email: document.getElementById('email').value,
+                            telefon: document.getElementById('telefon').value,
+                            napomena: document.getElementById('napomena').value || null,
+                            paketId: parseInt(document.getElementById('paketId').value)  
+                        })
+                    });
+                })
+                .catch(error => {
+                    console.error("Greška pri učitavanju korisnika:", error);
+                    alert("Greška pri učitavanju korisnika.");
+                    window.location.href = 'korisnik.html';
+                });
+        }
+    </script>
+
+</body>
+
+</html>
