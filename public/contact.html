@@ -58,13 +58,13 @@
         document.getElementById('editForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const payload = {
+            const poruka = {
                 ime: document.getElementById('ime').value,
                 email: document.getElementById('email').value,
                 tekst: document.getElementById('poruka').value
             };
 
-            axios.post('http://localhost:8080/api/poruke', payload)
+            axios.post('http://localhost:8080/api/poruke', poruka)
                 .then(response => {
                     alert('Poruka uspešno poslata!');
                     this.reset();

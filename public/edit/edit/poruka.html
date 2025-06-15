@@ -78,13 +78,13 @@
             document.getElementById('edit-form').addEventListener('submit', function (e) {
                 e.preventDefault();
 
-                const payload = {
+                const poruka = {
                     ime: document.getElementById('ime').value.trim(),
                     email: document.getElementById('email').value.trim(),
                     tekst: document.getElementById('tekst').value.trim()
                 };
 
-                axios.put(`http://localhost:8080/api/poruke/${idParametar}`, payload)
+                axios.put(`http://localhost:8080/api/poruke/${idParametar}`, poruka)
                     .then(() => {
                         alert("Poruka uspešno izmenjena!");
                     })
@@ -94,6 +94,7 @@
             });
         }
     </script>
+
 </body>
 
 </html>
